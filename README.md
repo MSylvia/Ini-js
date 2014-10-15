@@ -11,7 +11,7 @@ The supported syntax is available at the [git-config man page](http://linux.die.
 * Ini-js does not support `prop = "foo" bar "baz"` syntax.
 * Ini-js does not support git-config's `[section.subsection]` subsection declaration syntax, only `[section "subsection"]`.
 * Ini-js does not support multivalued variables: existing properties declared with a new value will be overridden.
-* Ini-js *does* support variables declared outside of a section. These variables are considered to be in a `null` section, and must appear before any and all sections.
+* Ini-js *does* support variables declared outside of a section. These variables are considered to be in a `null` section, and must appear before any and all sections (when parsed; they can, however, be added programatically at any point).
 
 
 ## Example
