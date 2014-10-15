@@ -1,9 +1,17 @@
-# Ini parser
+# Ini-js
 
-An Ini file parser following the git-config flawor. It should work on most Javascript
-enviroments, including web browsers, although its utility there is debatable :)
+Ini-js is an [INI file](http://en.wikipedia.org/wiki/INI_file) parser which (loosely) follows the git-config flavor. It should work on most Javascript enviroments, including web browsers.
 
-Check the supported syntax at http://linux.die.net/man/1/git-config
+This repository was forked from [drslump/Ini-js](https://github.com/drslump/Ini-js) 14 October 2014.
+
+## Supported Syntax
+
+The supported syntax is available at the [git-config man page](http://linux.die.net/man/1/git-config), with some exceptions:
+
+* Ini-js does not support `prop = "foo" bar "baz"` syntax.
+* Ini-js does not support git-config's `[section.subsection]` subsection declaration syntax, only `[section "subsection"]`.
+* Ini-js does not support multivalued variables: existing properties declared with a new value will be overridden.
+* Ini-js *does* support variables declared outside of a section. These variables are considered to be in a `null` section, and must appear before any and all sections.
 
 
 ## Example
@@ -21,14 +29,14 @@ Check the supported syntax at http://linux.die.net/man/1/git-config
         'baz = off'
     ].join('\n'));
 
-    ini.get('prop')           // value
-    ini.get('sect.foo')       // bar
-    ini.get('sect:label.baz') // false
+    ini.get('prop');           // value
+    ini.get('sect.foo');       // bar
+    ini.get('sect:label.baz'); // false
 
-    ini.toObject()            // {prop: value, sect: { foo: bar, baz: true } ...}
-    ini.toString()            // Generates back the ini file
+    ini.toObject();            // {prop: value, sect: { foo: bar, baz: true } ...}
+    ini.toString();            // Generates back the ini file
     
-    // It's also to modify or build an ini file programatically
+    // You can also modify or build an INI file programatically
     var sect = ini.section('newsect', 'mylabel');
     sect.comment('My comment');
     sect.property('foo', 'bar');
@@ -36,9 +44,10 @@ Check the supported syntax at http://linux.die.net/man/1/git-config
 
 ## License
 
-    The MIT License
+Ini-js is licensed under the MIT License.
 
-    Copyright (c) 2012 Iván -DrSlump- Montes
+    Copyright © 2012 Iván -DrSlump- Montes
+    with portions copyright © 2014 Anyasia
 
     Permission is hereby granted, free of charge, to any person obtaining
     a copy of this software and associated documentation files (the
