@@ -1,6 +1,6 @@
 # Ini-js
 
-Ini-js is an [INI file](http://en.wikipedia.org/wiki/INI_file) parser which (loosely) follows the git-config flavor. It should work on most Javascript environments, including web browsers.
+Ini-js is an [INI file](http://en.wikipedia.org/wiki/INI_file) parser which (loosely) follows the git-config flavor. It should work on most JavaScript environments, but is developed and optimized for TideSDK and web browsers.
 
 This repository was forked from [drslump/Ini-js](https://github.com/drslump/Ini-js) 14 October 2014.
 
