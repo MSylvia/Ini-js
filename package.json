@@ -1,7 +1,7 @@
 {
-  "name": "Ini",
-  "description": "Ini file parser supporting Git config syntax.",
-  "version": "1.0.0",
+  "name": "Ini-js",
+  "description": "INI file parser supporting modified git-config syntax.",
+  "version": "2.0.0",
   "licenses": [{
     "type": "MIT",
     "url": "http://en.wikipedia.org/wiki/MIT_License"
@@ -10,15 +10,14 @@
     "name": "Iván -DrSlump- Montes",
     "web": "http://pollinimini.net/",
     "email": "drslump@pollinimini.net"
+  },
+  {
+    "name": "Anyasia Lightbringer",
+    "web": "http://github.com/Anyasia/",
   }],
   "repository": {
     "type": "git",
-    "url": "http://github.com/drslump/ini-js"
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-    "jasmine-node": "*"
+    "url": "http://github.com/Anyasia/Ini-js"
   },
   "directories": {
     "lib": "lib"
