@@ -47,7 +47,7 @@ The supported syntax is available at the [git-config man page](http://linux.die.
 Ini-js is licensed under the MIT License.
 
     Copyright © 2012 Iván -DrSlump- Montes
-    with portions copyright © 2014 Anyasia
+    with portions copyright © 2014 Anyasia Lightbringer
 
     Permission is hereby granted, free of charge, to any person obtaining
     a copy of this software and associated documentation files (the
