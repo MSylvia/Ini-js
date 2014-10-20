@@ -8,13 +8,14 @@ This repository was forked from [drslump/Ini-js](https://github.com/drslump/Ini-
 
 The supported syntax is available at the [git-config man page](http://linux.die.net/man/1/git-config), with some exceptions:
 
-* Ini-js does not support `prop = "foo" bar "baz"` syntax, nor multivalued variables generally. Existing properties declared with a new value will be overwriten.
+* Ini-js does not support `prop = "foo" bar "baz"` syntax, nor multivalued variables generally. Existing variables declared with a new value will be overwriten.
 * Ini-js does not support git-config's `[section.subsection]` subsection declaration syntax, only `[section "subsection"]`.
 * Ini-js *does* support variables declared outside of a section. These variables are considered to be in a `null` section, and must appear before any and all sections (when parsed; they can, however, be added programatically at any point).
  * Because of this, no section name may be identical to a variable outside of a section. Sections added with the name of an existing `null`-section variable will overwrite the existing variable, and vice versa.
 * Variables with comments following them will be parsed properly, but the comment will be stripped and will not be retained if the Ini object is later converted toback to a string. End-of-line comments can also not be created programmatically, only full-line comments. 
 * Sections declared multiple times will not be overwritten, but will be counted as a single section per the git-config spec. However, they will be merged into a single section if the Ini object is later converted back to a string.
- * Existing sections which are re-declared with `Ini.section()`, however, *will* overwrite the existing section. Because of this, it is recommended to set properties with `Ini.property()` if you are unsure whether the section already exists, as this will utilize a section if it exists, or create one if it does not.
+ * Existing sections which are re-declared with `Ini.section()`, however, *will* overwrite the existing section. Because of this, it is recommended to set variables with `Ini.property()` if you are unsure whether the section already exists, as this will utilize a section if it exists, or create one if it does not.
+* Comments which are declared under a section header will be considered to be part of that section. As such, comments which annotate sections may lose meaning if they are declared before the section header if variables are later added to the section preceding it, either programmatically or through re-declared section headers.
 
 
 ## Example
