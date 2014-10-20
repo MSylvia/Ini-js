@@ -13,6 +13,7 @@ The supported syntax is available at the [git-config man page](http://linux.die.
 * Ini-js does not support multivalued variables: existing properties declared with a new value will be overridden.
 * Ini-js *does* support variables declared outside of a section. These variables are considered to be in a `null` section, and must appear before any and all sections (when parsed; they can, however, be added programatically at any point).
   * Because of this, no section name may be identical to a variable outside of a section. Sections added with the name of an existing `null`-section variable will override the existing variable, and vice versa.
+ * Variables with comments following them will be parsed properly, but the comment will be stripped and will not be retained if the Ini object is later converted toback to a string. End-of-line comments can also not be created programmatically, only full-line comments. 
 
 
 ## Example
