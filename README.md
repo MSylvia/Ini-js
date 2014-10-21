@@ -12,10 +12,17 @@ The supported syntax is available at the [git-config man page](http://linux.die.
 * Ini-js does not support git-config's `[section.subsection]` subsection declaration syntax, only `[section "subsection"]`.
 * Ini-js *does* support variables declared outside of a section. These variables are considered to be in a `null` section, and must appear before any and all sections (when parsed; they can, however, be added programatically at any point).
  * Because of this, no section name may be identical to a variable outside of a section. Sections added with the name of an existing `null`-section variable will overwrite the existing variable, and vice versa.
-* Variables with comments following them will be parsed properly, but the comment will be stripped and will not be retained if the Ini object is later converted toback to a string. End-of-line comments can also not be created programmatically, only full-line comments. 
 * Sections declared multiple times will not be overwritten, but will be counted as a single section per the git-config spec. However, they will be merged into a single section if the Ini object is later converted back to a string.
  * Existing sections which are re-declared with `Ini.section()`, however, *will* overwrite the existing section. Because of this, it is recommended to set variables with `Ini.property()` if you are unsure whether the section already exists, as this will utilize a section if it exists, or create one if it does not.
 * Comments which are declared under a section header will be considered to be part of that section. As such, comments which annotate sections may lose meaning if they are declared before the section header if variables are later added to the section preceding it, either programmatically or through re-declared section headers.
+* `0` and `1` will be considered integers by the program. These will still evaluate as truthy and falsey when checked using `==`; however, this also means that a `0` meant to represent an integer will return `false` if not properly checked—the same as either a boolean value or a non-existant property (which will return the falsey `null`). As such, care should be taken when checking the value or existence of variables.
+
+It is important to note that the above syntax indicates only the supported *parsing* syntax. **The syntax of an INI file created by calling `Ini.toString()` is guaranteed to be parsable, but may not be identical to the syntax of the file originally provided.** Notably, while variables with comments following them will be parsed properly, the comment will be stripped and will not be retained if the Ini object is later converted back to a string. Furthermore, the boolean values `false` and `off` will be converted to `no` by `Ini.toString()`, while `true` and `on`, as well as variables specified without a value, will be converted to `yes`.
+
+### Additional notes
+
+* End-of-line comments cannot be created programmatically, only full-line comments.
+* In compliance with the git-config spec, only strings, integers, and booleans are allowed as value types. Values declared as `null`, or created programmatically with `null` declared as a string, will be strings. Values created programmatically with `null` declared *as null* will be `true`. Numbers other than integers will be strings.
 
 
 ## Example
