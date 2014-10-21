@@ -6,10 +6,10 @@ This repository was forked from [drslump/Ini-js](https://github.com/drslump/Ini-
 
 ## Supported Syntax
 
-The supported syntax is available at the [git-config man page](http://linux.die.net/man/1/git-config), with some exceptions:
+The supported syntax is available at the [git-config man page](https://www.kernel.org/pub/software/scm/git/docs/git-config.html), with some exceptions:
 
 * Ini-js does not support `prop = "foo" bar "baz"` syntax, nor multivalued variables generally. Existing variables declared with a new value will be overwriten.
-* Ini-js does not support git-config's `[section.subsection]` subsection declaration syntax, only `[section "subsection"]`.
+* Ini-js does not support the deprecated `[section.subsection]` subsection declaration syntax, only `[section "subsection"]`.
 * Ini-js *does* support variables declared outside of a section. These variables are considered to be in a `null` section, and must appear before any and all sections (when parsed; they can, however, be added programatically at any point).
  * Because of this, no section name may be identical to a variable outside of a section. Sections added with the name of an existing `null`-section variable will overwrite the existing variable, and vice versa.
 * Sections declared multiple times will not be overwritten, but will be counted as a single section per the git-config spec. However, they will be merged into a single section if the Ini object is later converted back to a string.
