@@ -23,7 +23,7 @@ It is important to note that the above syntax indicates only the supported *pars
 ### Additional notes
 
 * End-of-line comments cannot be created programmatically, only full-line comments.
-* In compliance with the git-config spec, only strings, integers, and booleans are allowed as value types. Values declared as `null`, or created programmatically with `null` declared as a string, will be strings. Values created programmatically with `null` declared *as null* will be `true`. Numbers other than integers will be strings.
+* `null` is not a valid value. A variable with a value declared as `null` will have that value as a string. Variables created programmatically with a value of `null` will be `true`, unless it is passed as a string.
 
 
 ## Example
