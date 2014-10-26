@@ -15,7 +15,11 @@ The supported syntax is available at the [git-config man page](https://www.kerne
 * All numbers, not only integers, will be returned with the `number` type. This includes numbers defined as strings (unless encapsulated in "double quotes"), expontential-notation numbers (`8e50`), hexadecimal integers (`0xFF`), and signed numbers (`-10`, `+10.5`), but does *not* include `NaN` or `Infinity`, which are returned as strings.
 * `0` and `1` will be considered numbers by the program. As normal in JavaScript, these will be truthy and falsey when evaluated in a conditional; however, this also means that a `0` meant to represent an integer will return `false` if not properly checked—the same as either a boolean value or a non-existent property (which will return the falsey `null`). As such, care should be taken when checking the value or existence of variables.
 
-It is important to note that the above syntax indicates only the supported *parsing* syntax. **The syntax of an INI file created by calling `Ini.toString()` is guaranteed to be parsable, but may not be identical to the syntax of the file originally provided.** Notably, while variables with comments following them will be parsed properly, the comment will be stripped and will not be retained if the Ini object is later converted back to a string. Furthermore, the boolean values `false` and `off` will be converted to `no` by `Ini.toString()`, while `true` and `on`, as well as variables specified without a value, will be converted to `yes`.
+It is important to note that the above syntax indicates only the supported *parsing* syntax. **The syntax of an INI file created by calling `Ini.toString()` is guaranteed to be parsable, but may not be identical to the syntax of the file originally provided.** Notably, the following discrepancies may occur between a parsed or created line and the way it is presented when converted to a string:
+
+* While variables (or section headers) with comments following them will be parsed properly, the comment will be stripped and will not be retained if the Ini object is later converted back to a string.
+* The boolean values `false` and `off` will be converted to `no` by `Ini.toString()`, while `true` and `on`, as well as variables specified without a value, will be converted to `yes`.
+* All variables and section names (but not section labels) will be converted to lowercase. As they are case-insensitive, however, you may access them in their original capitalizations.
 
 ### Additional notes
 
