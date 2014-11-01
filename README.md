@@ -17,14 +17,12 @@ The supported syntax is available at the [git-config man page](https://www.kerne
 
 It is important to note that the above syntax indicates only the supported *parsing* syntax. **The syntax of an INI file created by calling `Ini.toString()` is guaranteed to be parsable, but may not be identical to the syntax of the file originally provided.** Notably, the following discrepancies may occur between a parsed or created line and the way it is presented when converted to a string:
 
-* While variables (or section headers) with comments following them will be parsed properly, the comment will be stripped and will not be retained if the Ini object is later converted back to a string.
-* Full-line comments will be retained, but will always be declared with a `;` even if they were originally declared with a `#`.
+* Comments will always be declared with a `;` even if they were originally declared with a `#`.
 * The boolean values `false` and `off` will be converted to `no` by `Ini.toString()`, while `true` and `on`, as well as variables specified without a value, will be converted to `yes`.
 * All variables and section names (but not section labels) will be converted to lowercase. As they are case-insensitive, however, you may access them in their original capitalizations.
 
 ### Additional notes
 
-* End-of-line comments cannot be created programmatically, only full-line comments.
 * Per the git-config spec, `null` is not a valid value. A variable with a value declared as `null` will have that value as a string. Variables created programmatically with a value of `null` will be `true`, unless it is passed as a string.
 * Sections declared multiple times will not be overwritten, but will be counted as a single section per the git-config spec. However, they will be merged into a single section if the Ini object is later converted back to a string.
  * Existing sections which are re-declared with `Ini.section()`, however, *will* overwrite the existing section. Because of this, it is recommended to set variables with `Ini.property()` if you are unsure whether the section already exists, as this will utilize a section if it exists, or create one if it does not.
