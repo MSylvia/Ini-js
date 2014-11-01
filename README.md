@@ -26,6 +26,7 @@ It is important to note that the above syntax indicates only the supported *pars
 * Per the git-config spec, `null` is not a valid value. A variable with a value declared as `null` will have that value as a string. Variables created programmatically with a value of `null` will be `true`, unless it is passed as a string.
 * Sections declared multiple times will not be overwritten, but will be counted as a single section per the git-config spec. However, they will be merged into a single section if the Ini object is later converted back to a string.
  * Existing sections which are re-declared with `Ini.section()`, however, *will* overwrite the existing section. Because of this, it is recommended to set variables with `Ini.property()` if you are unsure whether the section already exists, as this will utilize a section if it exists, or create one if it does not.
+ * An end-of-line comment on a re-declared section header will be discarded.
 * Comments which are declared under a section header will be considered to be part of that section. As such, comments which annotate sections may lose meaning if they are declared before the section header if variables are later added to the section preceding it, either programmatically or through re-declared section headers.
 
 
