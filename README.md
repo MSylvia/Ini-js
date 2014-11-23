@@ -33,32 +33,13 @@ It is important to note that the above syntax indicates only the supported *pars
 * Arrays and objects passed as values will have `.toString()` called on them before being parsed, as neither are valid types under the git-config spec. By default, `Array.toString()` is equivalent to `Array.join()` and `Object.toString()` returns `[object Object]`.
 
 
+## Known Issues
+
+For documentation of known issues and bugs, or to submit your own issues, see the [issues page](https://github.com/Anyasia/Ini-js/issues).
+
 ## Example
 
-    // Create a new parser 
-    var ini = new Ini();
-
-    ini.parse([
-        'prop = value',
-        '[sect]',
-        'foo = bar',
-        'baz = yes',
-        '[sect "label"]',
-        'foo = "bar"',
-        'baz = off'
-    ].join('\n'));
-
-    ini.get('prop');           // value
-    ini.get('sect.foo');       // bar
-    ini.get('sect:label.baz'); // false
-
-    ini.toObject();            // {prop: value, sect: { foo: bar, baz: true } ...}
-    ini.toString();            // Generates back the ini file
-    
-    // You can also modify or build an INI file programatically
-    var sect = ini.section('newsect', 'mylabel');
-    sect.comment('My comment');
-    sect.property('foo', 'bar');
+Example code snippets will be added soon.
 
 
 ## License
