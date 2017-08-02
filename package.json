@@ -1,5 +1,5 @@
 {
-  "name": "Ini-js",
+  "name": "gitconfig-ini-js",
   "description": "INI file parser supporting modified git-config syntax.",
   "version": "2.0.0",
   "licenses": [{
@@ -13,7 +13,11 @@
   },
   {
     "name": "Anyasia Lightbringer",
-    "web": "http://github.com/Anyasia/",
+    "web": "http://github.com/Anyasia/"
+  },
+  {
+    "name": "Matt Sylvia",
+    "web": "http://github.com/msylvia/"
   }],
   "repository": {
     "type": "git",
